@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+	@@include('html/_head.htm',{ "title":"Головна" })
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{})
+			<main class="page">
+				<section class="services">
+					<div class="services__container">
+						<h1 class="services__title title">Наші послуги</h1>
+						<ul class="services__list">
+							<li class="services__item service-item">
+								<a href="service.html" class="service-item__link">
+									<img src="@img/service-01.jpeg" alt="Чоловічий перукар" class="service-item__image" />
+									<h2 class="service-item__title">Чоловічий перукар</h2>
+								</a>
+							</li>
+							<li class="services__item service-item">
+								<a href="service.html" class="service-item__link">
+									<img src="@img/service-02.jpeg" alt="Нігтьовий сервіс" class="service-item__image" />
+									<h2 class="service-item__title">Нігтьовий сервіс</h2>
+								</a>
+							</li>
+							<li class="services__item service-item">
+								<a href="service.html" class="service-item__link">
+									<img src="@img/service-03.jpeg" alt="Косметичні послуги" class="service-item__image" />
+									<h2 class="service-item__title">Косметичні послуги</h2>
+								</a>
+							</li>
+							<li class="services__item service-item">
+								<a href="service.html" class="service-item__link">
+									<img src="@img/service-04.jpeg" alt="Масаж" class="service-item__image" />
+									<h2 class="service-item__title">Масаж</h2>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="feedback">
+					<div class="feedback__container">
+						<h2 class="feedback__title title">Ми з вами звʼяжемось</h2>
+						<form action="#" class="feedback__form" method="POST">
+							<input type="text" class="feedback__input input" name="contact" placeholder="Телефон / Telegram" required />
+							<button class="feedback__button button" type="submit">Відправити</button>
+						</form>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_js.htm',{})
+	</body>
+</html>

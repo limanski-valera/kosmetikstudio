@@ -1,0 +1,110 @@
+.header {
+	padding: toRem(15) 0;
+	font-weight: 600;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	&._header-scroll {
+		background-color: rgb(12, 10, 9, 0.8);
+		backdrop-filter: blur(40px);
+	}
+	&__container {
+		gap: toRem(25);
+		align-items: center;
+		@media (min-width: $mobile) {
+			display: grid;
+			grid-template-columns: toRem(120) 1fr toRem(120);
+		}
+		@media (max-width: $mobile) {
+			display: flex;
+		}
+	}
+	&__logo-wrapper {
+		@media (max-width: $mobile) {
+			flex: 1 1 auto;
+			position: relative;
+			z-index: 4;
+		}
+	}
+	&__logo {
+		transition: transform 0.3s;
+		max-width: toRem(80);
+		@media (max-width: $mobile) {
+			max-width: toRem(50);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+		img {
+			max-width: 100%;
+		}
+	}
+	&__menu {
+	}
+}
+.language {
+	position: relative;
+	text-transform: uppercase;
+	text-align: right;
+	&__button {
+		font-weight: inherit;
+		padding: 10px 10px;
+		border-radius: 5px;
+		text-transform: uppercase;
+		background-color: $accentColor;
+		transition: background-color 0.3s;
+		color: $bgColor;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $accentColorHover;
+			}
+		}
+		._lang-open & {
+			background-color: $accentColorHover;
+		}
+	}
+	&__body {
+		position: absolute;
+		top: calc(100% + toRem(5));
+		right: 0;
+		min-width: 100%;
+		background-color: $bgColor;
+		transition:
+			transform 0.3s,
+			opacity 0.3s,
+			visibility 0.3s;
+		transform: translateX(20px);
+		opacity: 0;
+		visibility: hidden;
+		._lang-open & {
+			transform: translate(0);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	&__list {
+		border: 1px solid $lightBgColor;
+		border-radius: 5px;
+		overflow: hidden;
+		li {
+			padding: 10px;
+			transition:
+				background-color 0.3s,
+				color 0.3s;
+			&.current-lang {
+				pointer-events: none;
+				background-color: $lightBgColor;
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: $accentColor;
+					color: $bgColor;
+				}
+			}
+		}
+	}
+}

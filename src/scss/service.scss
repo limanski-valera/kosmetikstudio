@@ -1,0 +1,195 @@
+.service {
+	&__head {
+	}
+}
+.head-service {
+	@include adaptiveValue('margin-bottom', 80, 50);
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(15);
+	}
+	&__title {
+	}
+	&__description {
+	}
+}
+.master {
+	&:not(:last-child) {
+		@include adaptiveValue('margin-bottom', 70, 40);
+	}
+	&__container {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: toRem(1);
+			background-color: $accentColor;
+			opacity: 0.5;
+			border-radius: 10px;
+		}
+		@include adaptiveValue('padding-bottom', 70, 40);
+		@media (min-width: $mobile) {
+			display: flex;
+			gap: toRem(20);
+		}
+	}
+	&__photo {
+		flex: 0 0 30%;
+		img {
+			max-width: 100%;
+			border-radius: 5px;
+		}
+		@media (max-width: $mobile) {
+			display: none;
+		}
+	}
+	&__content {
+		@media (min-width: $mobile) {
+			width: calc(70% - toRem(20));
+		}
+	}
+	&__name {
+		font-weight: 600;
+		text-transform: uppercase;
+		@include adaptiveValue('font-size', 30, 18);
+		@media (max-width: $mobile) {
+			text-align: center;
+		}
+	}
+	&__sub-title {
+		font-size: toRem(16);
+		@media (max-width: $mobile) {
+			text-align: center;
+		}
+		&:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+	}
+	&__photo-in-content {
+		display: none;
+		@media (max-width: $mobile) {
+			display: block;
+			text-align: center;
+			max-width: toRem(450);
+			margin: 0 auto;
+			margin-bottom: toRem(20);
+			img {
+				max-width: 100%;
+				border-radius: 5px;
+			}
+		}
+	}
+	&__text {
+		margin-bottom: toRem(20);
+	}
+	&__prices {
+		margin-bottom: toRem(20);
+	}
+	&__actives {
+		display: flex;
+		gap: toRem(20);
+		align-items: center;
+		margin-bottom: toRem(20);
+		@media (max-width: $mobile) {
+			justify-content: center;
+		}
+	}
+	&__call-button {
+	}
+	&__society {
+		display: flex;
+		gap: toRem(10);
+		flex-wrap: wrap;
+		align-items: center;
+	}
+	&__society-item {
+	}
+	&__society-link {
+		width: toRem(40);
+		height: toRem(40);
+		flex: 0 0 auto;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: toRem(10);
+		border: 1px solid $lightBgColor;
+		line-height: 0;
+		transition:
+			border-color 0.3s,
+			transform 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translateY(-3px);
+				border-color: $accentColor;
+				svg {
+					fill: $accentColor;
+				}
+			}
+		}
+		svg {
+			width: 100%;
+			height: auto;
+			max-width: 100%;
+			fill: $lightColor;
+			transition: fill 0.3s;
+		}
+	}
+	&__society-icon {
+		svg {
+			width: 100%;
+		}
+	}
+	&__slider {
+	}
+	&__slider-wrapper {
+		align-items: center;
+	}
+	&__slide {
+		display: block;
+		border-radius: 5px;
+		overflow: hidden;
+		cursor: zoom-in;
+		@media (any-hover: hover) {
+			&:hover {
+				img {
+					transform: scale(1.05);
+				}
+			}
+		}
+		img {
+			transition: transform 0.3s;
+			max-width: 100%;
+		}
+	}
+}
+.prices {
+	font-weight: 600;
+	display: flex;
+	flex-direction: column;
+	gap: toRem(5);
+	@media (min-width: $mobile) {
+		max-width: toRem(600);
+	}
+	@media (max-width: $mobile) {
+		gap: toRem(10);
+	}
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		gap: toRem(15);
+	}
+	&__label {
+	}
+	&__value {
+		flex: 0 0 toRem(100);
+		text-align: right;
+		@media (max-width: $mobile) {
+			flex: 0 0 toRem(70);
+		}
+	}
+}

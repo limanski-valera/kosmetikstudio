@@ -1,0 +1,87 @@
+//====================================================================================================
+.footer {
+	@include adaptiveValue('padding-top', 50, 20);
+	@include adaptiveValue('padding-bottom', 30, 20);
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		gap: toRem(25);
+		align-items: center;
+        @media (max-width:$mobile){
+            flex-direction: column;
+        }
+	}
+	&__society {
+	}
+	&__contacts {
+	}
+}
+.society {
+	&__list {
+		display: flex;
+		gap: toRem(20);
+		flex-wrap: wrap;
+	}
+	&__item {
+		width: toRem(50);
+		height: toRem(50);
+		flex: 0 0 auto;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: toRem(14);
+		border: 1px solid $lightBgColor;
+		line-height: 0;
+		transition:
+			border-color 0.3s,
+			transform 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: translateY(-3px);
+				border-color: $accentColor;
+				svg {
+					fill: $accentColor;
+				}
+			}
+		}
+		svg {
+			width: 100%;
+			height: auto;
+			max-width: 100%;
+			fill: $lightColor;
+			transition: fill 0.3s;
+		}
+	}
+	&__link {
+	}
+}
+.contacts-footer {
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(15);
+		font-weight: 600;
+		text-align: right;
+	}
+	&__item {
+	}
+	&__link {
+		display: flex;
+		gap: toRem(10);
+		align-items: center;
+		justify-content: flex-end;
+		fill: $mainColor;
+        @media (max-width:$mobile){
+            text-align: center;
+            justify-content: center;
+        }
+		i {
+			width: toRem(20);
+		}
+		svg {
+			width: 100%;
+		}
+	}
+}
+//====================================================================================================
