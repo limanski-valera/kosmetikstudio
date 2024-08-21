@@ -7,9 +7,9 @@
 		justify-content: space-between;
 		gap: toRem(25);
 		align-items: center;
-        @media (max-width:$mobile){
-            flex-direction: column;
-        }
+		@media (max-width: $mobile) {
+			flex-direction: column;
+		}
 	}
 	&__society {
 	}
@@ -23,6 +23,8 @@
 		flex-wrap: wrap;
 	}
 	&__item {
+	}
+	&__link {
 		width: toRem(50);
 		height: toRem(50);
 		flex: 0 0 auto;
@@ -53,8 +55,6 @@
 			transition: fill 0.3s;
 		}
 	}
-	&__link {
-	}
 }
 .contacts-footer {
 	&__list {
@@ -72,10 +72,10 @@
 		align-items: center;
 		justify-content: flex-end;
 		fill: $mainColor;
-        @media (max-width:$mobile){
-            text-align: center;
-            justify-content: center;
-        }
+		@media (max-width: $mobile) {
+			text-align: center;
+			justify-content: center;
+		}
 		i {
 			width: toRem(20);
 		}

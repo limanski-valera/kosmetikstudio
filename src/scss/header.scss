@@ -6,9 +6,20 @@
 	left: 0;
 	width: 100%;
 	z-index: 100;
-	&._header-scroll {
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
 		background-color: rgb(12, 10, 9, 0.8);
 		backdrop-filter: blur(40px);
+		opacity: 0;
+	}
+	&._header-scroll::before {
+		opacity: 1;
 	}
 	&__container {
 		gap: toRem(25);

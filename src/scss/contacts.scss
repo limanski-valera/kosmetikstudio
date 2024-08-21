@@ -1,0 +1,55 @@
+.contacts {
+	@include adaptiveValue('margin-bottom', 80, 40);
+	&__container {
+		@media (min-width: $mobile) {
+			display: flex;
+			gap: toRem(70);
+			align-items: center;
+			@media (max-width: $tablet) {
+				gap: toRem(20);
+			}
+		}
+	}
+	&__map {
+		min-height: toRem(400);
+		position: relative;
+		border-radius: 5px;
+		overflow: hidden;
+		@media (min-width: $mobile) {
+			flex: 0 0 calc((100% - toRem(70)) / 2);
+		}
+		@media (max-width: $mobile) {
+			width: 100%;
+		}
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(20);
+		@media (max-width: $mobile) {
+			display: none;
+		}
+	}
+	&__item {
+	}
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: toRem(10);
+		font-weight: 600;
+	}
+	&__icon {
+		width: toRem(30);
+		svg {
+			width: 100%;
+		}
+	}
+}

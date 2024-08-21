@@ -53,9 +53,6 @@
 		}
 	}
 	&__name {
-		font-weight: 600;
-		text-transform: uppercase;
-		@include adaptiveValue('font-size', 30, 18);
 		@media (max-width: $mobile) {
 			text-align: center;
 		}
@@ -85,6 +82,9 @@
 	}
 	&__text {
 		margin-bottom: toRem(20);
+	}
+	&__price-title {
+		margin-bottom: toRem(10);
 	}
 	&__prices {
 		margin-bottom: toRem(20);
@@ -143,6 +143,9 @@
 		svg {
 			width: 100%;
 		}
+	}
+	&__gallery-title {
+		margin-bottom: toRem(10);
 	}
 	&__slider {
 	}

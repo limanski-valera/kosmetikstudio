@@ -1,6 +1,6 @@
 //====================================================================================================
 .services {
-    @include adaptiveValue("margin-bottom", 70, 30);
+	@include adaptiveValue('margin-bottom', 70, 30);
 	&__container {
 	}
 	&__title {
@@ -13,9 +13,9 @@
 		@media (max-width: $tablet) {
 			grid-template-columns: repeat(2, 1fr);
 		}
-        @media (max-width: toRem(600)){
-              grid-template-columns: 1fr;
-        }
+		@media (max-width: toRem(600)) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__item {
 	}
@@ -84,23 +84,23 @@
 
 //====================================================================================================
 .feedback {
-    &__container {
-    }
-    &__title {
-        text-align: center;
-        @include adaptiveValue("margin-bottom", 30, 20);
-    }
-    &__form {
-        display: flex;
-        gap: toRem(15);
-        max-width: toRem(650);
-        margin: 0 auto;
-        @media (max-width:$mobileSmall){
-            flex-direction: column;
-        }
-    }
-    &__input {
-    }
-    &__button {
-    }
+	&__container {
+	}
+	&__title {
+		text-align: center;
+		@include adaptiveValue('margin-bottom', 30, 20);
+	}
+	&__form {
+		display: flex;
+		gap: toRem(15);
+		max-width: toRem(650);
+		margin: 0 auto;
+		@media (max-width: $mobileSmall) {
+			flex-direction: column;
+		}
+	}
+	&__input {
+	}
+	&__button {
+	}
 }
