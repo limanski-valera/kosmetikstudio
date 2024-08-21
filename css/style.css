@@ -174,7 +174,7 @@ textarea.input {
 }
 .menu__list {
   display: flex;
-  gap: .9375rem;
+  gap: 1.5625rem;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center
@@ -183,6 +183,9 @@ textarea.input {
   text-transform: uppercase;
   position: relative;
   transition: color .3s
+}
+._active .menu__link {
+  color: #facc15
 }
 .menu__link::before {
   content: "";
@@ -197,6 +200,17 @@ textarea.input {
 }
 .icon-menu {
   display: none
+}
+.dropdown {
+  position: relative
+}
+.dropdown__list {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem
+}
+.dropdown__link {
+  text-transform: uppercase
 }
 .ibg {
   width: 100%;
@@ -232,7 +246,12 @@ textarea.input {
   text-transform: uppercase
 }
 .link {
+  fill: #fafaf9;
   transition: color .3s,fill .3s
+}
+.sub-title {
+  font-weight: 600;
+  text-transform: uppercase
 }
 .header {
   padding: .9375rem 0;
@@ -243,10 +262,21 @@ textarea.input {
   width: 100%;
   z-index: 100
 }
-.header._header-scroll {
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
   background-color: rgba(12,10,9,.8);
   -webkit-backdrop-filter: blur(40px);
-  backdrop-filter: blur(40px)
+  backdrop-filter: blur(40px);
+  opacity: 0
+}
+.header._header-scroll::before {
+  opacity: 1
 }
 .header__container {
   gap: 1.5625rem;
@@ -322,7 +352,7 @@ textarea.input {
   gap: 1.25rem;
   flex-wrap: wrap
 }
-.society__item {
+.society__link {
   width: 3.125rem;
   height: 3.125rem;
   flex: 0 0 auto;
@@ -337,7 +367,7 @@ textarea.input {
   transition: border-color .3s,transform .3s;
   transition: border-color .3s,transform .3s,-webkit-transform .3s
 }
-.society__item svg {
+.society__link svg {
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -454,10 +484,6 @@ textarea.input {
   max-width: 100%;
   border-radius: 5px
 }
-.master__name {
-  font-weight: 600;
-  text-transform: uppercase
-}
 .master__sub-title {
   font-size: 1rem
 }
@@ -469,6 +495,9 @@ textarea.input {
 }
 .master__text {
   margin-bottom: 1.25rem
+}
+.master__price-title {
+  margin-bottom: .625rem
 }
 .master__prices {
   margin-bottom: 1.25rem
@@ -510,6 +539,9 @@ textarea.input {
 .master__society-icon svg {
   width: 100%
 }
+.master__gallery-title {
+  margin-bottom: .625rem
+}
 .master__slider-wrapper {
   align-items: center
 }
@@ -540,6 +572,38 @@ textarea.input {
 .prices__value {
   flex: 0 0 6.25rem;
   text-align: right
+}
+.contacts__map {
+  min-height: 25rem;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden
+}
+.contacts__map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
+}
+.contacts__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem
+}
+.contacts__link {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  font-weight: 600
+}
+.contacts__icon {
+  width: 1.875rem
+}
+.contacts__icon svg {
+  width: 100%
 }
 .swiper {
   overflow: hidden
@@ -1107,6 +1171,28 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   left: 0
 }
 @media (min-width:47.99875em) {
+  .dropdown__list {
+    position: absolute;
+    top: calc(100% + .1875rem);
+    background-color: #0c0a09;
+    padding: .625rem 1.25rem;
+    border-radius: 5px;
+    left: -1.25rem;
+    width: 15.625rem;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    transition: opacity .3s,visibility .3s,-webkit-transform .3s;
+    transition: opacity .3s,visibility .3s,transform .3s;
+    transition: opacity .3s,visibility .3s,transform .3s,-webkit-transform .3s
+  }
+  ._open .dropdown__list {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translate(0);
+    transform: translate(0)
+  }
   .header__container {
     display: grid;
     grid-template-columns: 7.5rem 1fr 7.5rem
@@ -1121,6 +1207,22 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .prices {
     max-width: 37.5rem
   }
+  .contacts__container {
+    display: flex;
+    gap: 4.375rem;
+    align-items: center
+  }
+  .contacts__map {
+    flex: 0 0 calc((100% - 4.375rem)/ 2)
+  }
+}
+@media (min-width:47.99875em)and (any-hover:hover) {
+  .dropdown:hover .dropdown__list {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translate(0);
+    transform: translate(0)
+  }
 }
 @media (min-width:75em) {
   .page {
@@ -1128,6 +1230,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .title {
     font-size: 2.25rem
+  }
+  .sub-title {
+    font-size: 1.875rem
   }
   .footer {
     padding-top: 3.125rem
@@ -1153,8 +1258,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .master__container {
     padding-bottom: 4.375rem
   }
-  .master__name {
-    font-size: 1.875rem
+  .contacts {
+    margin-bottom: 5rem
   }
 }
 @media (max-width:61.99875em) {
@@ -1192,7 +1297,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .menu__list {
     flex-direction: column;
-    gap: 1.5625rem;
+    gap: .9375rem;
     font-size: 1.125rem;
     text-align: center
   }
@@ -1236,6 +1341,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     bottom: calc(50% - .0625rem);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg)
+  }
+  .dropdown__button {
+    display: none
+  }
+  .dropdown__list {
+    font-size: 1.125rem;
+    gap: .9375rem
   }
   .page {
     padding-top: 6.875rem
@@ -1287,6 +1399,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .prices__value {
     flex: 0 0 4.375rem
   }
+  .contacts__map {
+    width: 100%
+  }
+  .contacts__body {
+    display: none
+  }
 }
 @media (max-width:47.99875em)and (any-hover:none) {
   .icon-menu {
@@ -1308,6 +1426,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     padding-bottom: 1.875rem
   }
   .title {
+    font-size: 1.125rem
+  }
+  .sub-title {
     font-size: 1.125rem
   }
   .footer {
@@ -1334,8 +1455,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .master__container {
     padding-bottom: 2.5rem
   }
-  .master__name {
-    font-size: 1.125rem
+  .contacts {
+    margin-bottom: 2.5rem
   }
 }
 @media (min-width:22.5em)and (max-width:75em) {
@@ -1357,6 +1478,16 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   @supports not (font-size:clamp(1.125rem ,0.6428571429rem + 2.1428571429vw ,2.25rem)) {
     .title {
       font-size: calc(1.125rem + 1.125*(100vw - 22.5rem)/ 52.5)
+    }
+  }
+  @supports (font-size:clamp(1.125rem ,0.8035714286rem + 1.4285714286vw ,1.875rem)) {
+    .sub-title {
+      font-size: clamp(1.125rem ,.8035714286rem + 1.4285714286vw ,1.875rem)
+    }
+  }
+  @supports not (font-size:clamp(1.125rem ,0.8035714286rem + 1.4285714286vw ,1.875rem)) {
+    .sub-title {
+      font-size: calc(1.125rem + .75*(100vw - 22.5rem)/ 52.5)
     }
   }
   @supports (padding-top:clamp(1.25rem ,0.4464285714rem + 3.5714285714vw ,3.125rem)) {
@@ -1439,15 +1570,20 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
       padding-bottom: calc(2.5rem + 1.875*(100vw - 22.5rem)/ 52.5)
     }
   }
-  @supports (font-size:clamp(1.125rem ,0.8035714286rem + 1.4285714286vw ,1.875rem)) {
-    .master__name {
-      font-size: clamp(1.125rem ,.8035714286rem + 1.4285714286vw ,1.875rem)
+  @supports (margin-bottom:clamp(2.5rem ,1.4285714286rem + 4.7619047619vw ,5rem)) {
+    .contacts {
+      margin-bottom: clamp(2.5rem ,1.4285714286rem + 4.7619047619vw ,5rem)
     }
   }
-  @supports not (font-size:clamp(1.125rem ,0.8035714286rem + 1.4285714286vw ,1.875rem)) {
-    .master__name {
-      font-size: calc(1.125rem + .75*(100vw - 22.5rem)/ 52.5)
+  @supports not (margin-bottom:clamp(2.5rem ,1.4285714286rem + 4.7619047619vw ,5rem)) {
+    .contacts {
+      margin-bottom: calc(2.5rem + 2.5*(100vw - 22.5rem)/ 52.5)
     }
+  }
+}
+@media (min-width:47.99875em)and (max-width:61.99875em) {
+  .contacts__container {
+    gap: 1.25rem
   }
 }
 @media (any-hover:hover) {
@@ -1477,12 +1613,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     background-color: #facc15;
     color: #0c0a09
   }
-  .society__item:hover {
+  .society__link:hover {
     -webkit-transform: translateY(-3px);
     transform: translateY(-3px);
     border-color: #facc15
   }
-  .society__item:hover svg {
+  .society__link:hover svg {
     fill: #facc15
   }
   .service-item__link:hover::before {

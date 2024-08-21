@@ -4788,8 +4788,26 @@ PERFORMANCE OF THIS SOFTWARE.
             }));
         }
     }
+    function initDropdown() {
+        if (document.querySelector(".dropdown")) {
+            const dropdownClass = ".dropdown";
+            const activeClass = "_open";
+            const buttonSelector = ".dropdown__button";
+            const dropdownsList = document.querySelectorAll(dropdownClass);
+            document.addEventListener("click", (e => {
+                if (e.target.closest(buttonSelector)) {
+                    e.preventDefault();
+                    const dropdown = e.target.closest(dropdownClass);
+                    dropdown && dropdown.classList.toggle(activeClass);
+                } else if (!e.target.closest(dropdownClass)) dropdownsList.forEach((dropdown => {
+                    dropdown.classList.contains(activeClass) ? dropdown.classList.remove(activeClass) : null;
+                }));
+            }));
+        }
+    }
     document.addEventListener("DOMContentLoaded", (() => {
         initLanguages();
+        initDropdown();
     }));
     window["FLS"] = true;
     menuInit();
