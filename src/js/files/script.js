@@ -23,7 +23,7 @@ function initDropdown() {
 		const dropdownClass = '.dropdown';
 		const activeClass = '_open';
 		const buttonSelector = '.dropdown__button';
-		
+
 		const dropdownsList = document.querySelectorAll(dropdownClass);
 
 		document.addEventListener('click', (e) => {
@@ -42,7 +42,56 @@ function initDropdown() {
 	}
 }
 
+async function initForm() {
+	const API_KEY = '7536362957:AAFkDfJz8ZmKNG20AObi8KSLdmhT9o4gCIo';
+	const CHAT_ID = '@KosmetikStudioTop';
+	const URL = `https://api.telegram.org/bot${API_KEY}/sendMessage`;
+
+	const popupButton = document.querySelector('.popup-link');
+	const popupTextEl = document.querySelector('.popup__text');
+	const form = document.querySelector('.feedback__form');
+	const loadingClass = '_loading';
+
+	async function formSubmit(e) {
+		e.preventDefault();
+
+		const { contact } = Object.fromEntries(new FormData(e.target).entries());
+
+		const text = `Заявка з сайту!\nТелефон / Telegram: ${contact}`;
+
+		try {
+			document.documentElement.classList.add(loadingClass);
+
+			const response = await fetch(URL, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					chat_id: CHAT_ID,
+					text,
+				}),
+			});
+
+			if (response.ok) {
+				popupTextEl.textContent = 'Thanks! We will contact you.';
+
+				popupButton.click();
+			}
+		} catch (e) {
+			popupTextEl.textContent = 'Oooops. An error has occurred';
+		} finally {
+			document.documentElement.classList.remove(loadingClass);
+		}
+	}
+
+	if (form && popupButton) {
+		form.addEventListener('submit', formSubmit);
+	}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	initLanguages();
 	initDropdown();
+	initForm();
 });

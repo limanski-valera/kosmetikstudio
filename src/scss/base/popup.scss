@@ -50,12 +50,23 @@ body::after {
 	visibility: hidden;
 	transform: scale(0);
 	transition: transform 0.3s ease 0s;
-	background-color: #eee;
-	padding: 20px;
+	background-color: $bgColor;
+	padding: toRem(20) toRem(15) toRem(30);
 	width: 100%;
-	max-width: 900px;
+	max-width: 600px;
 	border-radius: 20px;
 	.lock & {
 		visibility: visible;
 	}
+}
+.popup__close {
+	outline: none;
+	margin-bottom: toRem(20);
+}
+.popup__text {
+	font-weight: 600;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: toRem(5);
 }
