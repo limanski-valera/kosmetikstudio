@@ -330,6 +330,14 @@ body::after {
 .popup-link {
   display: none
 }
+.head-service__container {
+  display: flex;
+  flex-direction: column;
+  gap: .9375rem
+}
+.head-service__description {
+  max-width: 56.25rem
+}
 .loader {
   position: fixed;
   top: 0;
@@ -556,11 +564,6 @@ body::after {
   gap: .9375rem;
   max-width: 40.625rem;
   margin: 0 auto
-}
-.head-service__container {
-  display: flex;
-  flex-direction: column;
-  gap: .9375rem
 }
 .master__container {
   position: relative
@@ -1333,6 +1336,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .sub-title {
     font-size: 1.875rem
   }
+  .head-service {
+    margin-bottom: 2.5rem
+  }
   .footer {
     padding-top: 3.125rem
   }
@@ -1347,9 +1353,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .feedback__title {
     margin-bottom: 1.875rem
-  }
-  .head-service {
-    margin-bottom: 5rem
   }
   .master:not(:last-child) {
     margin-bottom: 4.375rem
@@ -1530,6 +1533,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .sub-title {
     font-size: 1.125rem
   }
+  .head-service {
+    margin-bottom: 1.25rem
+  }
   .footer {
     padding-top: 1.25rem
   }
@@ -1544,9 +1550,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
   .feedback__title {
     margin-bottom: 1.25rem
-  }
-  .head-service {
-    margin-bottom: 3.125rem
   }
   .master:not(:last-child) {
     margin-bottom: 2.5rem
@@ -1587,6 +1590,16 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   @supports not (font-size:clamp(1.125rem ,0.8035714286rem + 1.4285714286vw ,1.875rem)) {
     .sub-title {
       font-size: calc(1.125rem + .75*(100vw - 22.5rem)/ 52.5)
+    }
+  }
+  @supports (margin-bottom:clamp(1.25rem ,0.7142857143rem + 2.380952381vw ,2.5rem)) {
+    .head-service {
+      margin-bottom: clamp(1.25rem ,.7142857143rem + 2.380952381vw ,2.5rem)
+    }
+  }
+  @supports not (margin-bottom:clamp(1.25rem ,0.7142857143rem + 2.380952381vw ,2.5rem)) {
+    .head-service {
+      margin-bottom: calc(1.25rem + 1.25*(100vw - 22.5rem)/ 52.5)
     }
   }
   @supports (padding-top:clamp(1.25rem ,0.4464285714rem + 3.5714285714vw ,3.125rem)) {
@@ -1637,16 +1650,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   @supports not (margin-bottom:clamp(1.25rem ,0.9821428571rem + 1.1904761905vw ,1.875rem)) {
     .feedback__title {
       margin-bottom: calc(1.25rem + .625*(100vw - 22.5rem)/ 52.5)
-    }
-  }
-  @supports (margin-bottom:clamp(3.125rem ,2.3214285714rem + 3.5714285714vw ,5rem)) {
-    .head-service {
-      margin-bottom: clamp(3.125rem ,2.3214285714rem + 3.5714285714vw ,5rem)
-    }
-  }
-  @supports not (margin-bottom:clamp(3.125rem ,2.3214285714rem + 3.5714285714vw ,5rem)) {
-    .head-service {
-      margin-bottom: calc(3.125rem + 1.875*(100vw - 22.5rem)/ 52.5)
     }
   }
   @supports (margin-bottom:clamp(2.5rem ,1.6964285714rem + 3.5714285714vw ,4.375rem)) {
