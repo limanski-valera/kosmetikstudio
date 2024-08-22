@@ -2,18 +2,7 @@
 	&__head {
 	}
 }
-.head-service {
-	@include adaptiveValue('margin-bottom', 80, 50);
-	&__container {
-		display: flex;
-		flex-direction: column;
-		gap: toRem(15);
-	}
-	&__title {
-	}
-	&__description {
-	}
-}
+
 .master {
 	&:not(:last-child) {
 		@include adaptiveValue('margin-bottom', 70, 40);
